@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
 
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y); // x, y, z 축
         transform.position += moveDir * moveSpeed * Time.deltaTime;
-        Debug.Log(inputVector);
+
+        float rotateSpeed = 10f; // 방향전환 스피드
+        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
     }
 }
