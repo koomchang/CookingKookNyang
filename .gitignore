@@ -13,11 +13,11 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+.KitchenChaos
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 .idea
-
+/_Assets/
 # Mono auto generated files
 mono_crash.*
 
@@ -218,7 +218,7 @@ csx/
 # Microsoft Azure Emulator
 ecf/
 rcf/
-
+_Assets/
 # Windows Store app package directories and files
 AppPackages/
 BundleArtifacts/
