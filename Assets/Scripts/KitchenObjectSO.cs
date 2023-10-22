@@ -10,7 +10,4 @@ public class KitchenObjectSO : ScriptableObject
     public Sprite sprite;
     public string objectName;
 
-
-
-
 }
