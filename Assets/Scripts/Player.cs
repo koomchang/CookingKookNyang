@@ -1,15 +1,41 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
+{   
+    public static Player Instance { get; private set; } // singleton in Unity
+    
+    public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
+    public class OnSelectedCounterChangedEventArgs : EventArgs {
+        public ClearCounter selectedCounter;
+    }
+
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
 
     private bool isWalking;
     private Vector3 lastInteractDir; // game object 를 향하여 계속 이동하지 않아도 game object 와 상호작용할 수 있기 위해 만든 변수
+    private ClearCounter selectedCounter;
+
+    private void Awake() {
+        if (Instance != null) {
+            Debug.LogError("There is more than one Player instance");
+        }
+        Instance = this;
+    }
+
+    private void Start() {
+        gameInput.OnInteractAction += GameInput_OnInteractAction; // 미리 설정한 키를 입력한다면 상호작용
+    }
+
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e) {
+        if (selectedCounter != null) {
+            selectedCounter.Interact();
+        }
+    }
 
     private void Update() {
         HandleMovement();
@@ -39,9 +65,15 @@ public class Player : MonoBehaviour
 
             if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
                 // clearCounter 과 충돌하여 그 정보가 존재한다면
-                clearCounter.Interact();
+                if (clearCounter != selectedCounter) {
+                    SetSelectedCounter(clearCounter);
+                }
+            } else {
+                SetSelectedCounter(null);
             }
-        } 
+        } else {
+            SetSelectedCounter(null);
+        }
     } 
 
     private void HandleMovement() {
@@ -99,5 +131,13 @@ public class Player : MonoBehaviour
 
         float rotateSpeed = 10f; // 방향전환 스피드
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+    }
+
+    private void SetSelectedCounter(ClearCounter selectedCounter) {
+        this.selectedCounter = selectedCounter;
+
+        OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs {
+            selectedCounter = selectedCounter
+        });
     }
 }
