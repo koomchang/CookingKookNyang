@@ -2,31 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearCounter : MonoBehaviour // , IKitchenObjectParent
-{
+public class ClearCounter : MonoBehaviour , IKitchenObjectParent {
 
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
     [SerializeField] private Transform counterTopPoint;
-    [SerializeField] private ClearCounter secondClearCounter;
-    [SerializeField] private bool testing;
-    
-
+   
     private KitchenObject kitchenObject;
 
-    private void Update() {
-        if (testing && Input.GetKeyDown(KeyCode.T)) {
-            if (kitchenObject != null) {
-                kitchenObject.SetClearCounter(secondClearCounter);
-            }
-        }
-    }
 
     public void Interact(Player player) {
         if (kitchenObject == null) { // kitchenObject 존재하지 않다면 
             Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab, counterTopPoint); // 해당 위치에 생성
-            kitchenObjectTransform.GetComponent<KitchenObject>().SetClearCounter(this);
+            kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(this);
         } else {
-            Debug.Log(kitchenObject.GetClearCounter());
+            // 플레이어에게 오브젝트 주기
+            kitchenObject.SetKitchenObjectParent(player);
         }       
     }
 
