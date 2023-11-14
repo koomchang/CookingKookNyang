@@ -108,7 +108,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 			// 동시에 2가지 방향(x,z)으로 갈 때 하나의 방향에서 충돌이 발생하여 나머지 하나의 방향으로도 갈 수 없을 때
 			// 일단 x 방향으로 가도록 설정
 			var moveDirX = new Vector3(moveDir.x, 0, 0).normalized; // 정규화하여 대각과 정각의 속도를 일정하게 설정
-			canMove = !Physics.CapsuleCast(transform.position,
+			canMove = moveDir.x != 0 && !Physics.CapsuleCast(transform.position,
 				transform.position + Vector3.up * playerHeight,
 				playerRadius,
 				moveDirX,
@@ -121,16 +121,15 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 			else {
 				// x 방향으로 가는 것이 불가능하다면 z 방향으로 가도록 설정
 				var moveDirZ = new Vector3(0, 0, moveDir.z).normalized; // 정규화하여 대각과 정각의 속도를 일정하게 설정
-				canMove = !Physics.CapsuleCast(transform.position,
+				canMove = moveDir.z != 0 && !Physics.CapsuleCast(transform.position,
 					transform.position + Vector3.up * playerHeight,
 					playerRadius,
 					moveDirZ,
 					moveDistance);
 
-				if (canMove) {
+				if (canMove)
 					// z 방향으로만 가도록 설정
 					moveDir = moveDirZ;
-				}
 				// x, z 모든 방향으로 가는 것이 불가능
 			}
 		}
