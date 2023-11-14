@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1010488763231196623}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.255, z: 0}
+  m_LocalPosition: {x: 0, y: 1.285, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterTopPoint: {fileID: 3816187365811613994}
+  cutKitchenObjectSO: {fileID: 11400000, guid: 5c6fdf5710de64e82a96ba14fa62e50e, type: 2}
 --- !u!1001 &1847183998342195932
 PrefabInstance:
   m_ObjectHideFlags: 0

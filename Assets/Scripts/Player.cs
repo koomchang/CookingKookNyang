@@ -21,6 +21,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 
 	private void Start() {
 		gameInput.OnInteractAction += GameInput_OnInteractAction; // 미리 설정한 키를 입력한다면 상호작용
+		gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
 	}
 
 	private void Update() {
@@ -50,11 +51,16 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 		// 오브젝트 존재하지 않다면 false 반환
 	}
 
-	public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
+	private void GameInput_OnInteractAlternateAction(object sender, EventArgs e) {
+		if (selectedCounter != null) selectedCounter.InteractAlternate(this);
+	}
 
 	private void GameInput_OnInteractAction(object sender, EventArgs e) {
 		if (selectedCounter != null) selectedCounter.Interact(this);
 	}
+
+	public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
+
 
 	public bool IsWalking() {
 		return isWalking;
