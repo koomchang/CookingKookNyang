@@ -1,31 +1,29 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class GameInput : MonoBehaviour
-{
-    public event EventHandler OnInteractAction;
-    private PlayerInputActions playerInputActions;
+public class GameInput : MonoBehaviour {
+	private PlayerInputActions playerInputActions;
 
-    private void Awake() {
-        playerInputActions = new PlayerInputActions();
-        playerInputActions.Player.Enable();
+	private void Awake() {
+		playerInputActions = new PlayerInputActions();
+		playerInputActions.Player.Enable();
 
-        playerInputActions.Player.Interact.performed += Interact_performed;
-        // 설정한 키가 입력되었을 때에만 상호작용
-    }
+		playerInputActions.Player.Interact.performed += Interact_performed;
+		// 설정한 키가 입력되었을 때에만 상호작용
+	}
 
-    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
-        OnInteractAction?.Invoke(this, EventArgs.Empty); // Not null 이라면 실행
-    }
+	public event EventHandler OnInteractAction;
 
-    public Vector2 GetMovementVectorNormalized() {
+	private void Interact_performed(InputAction.CallbackContext obj) {
+		OnInteractAction?.Invoke(this, EventArgs.Empty); // Not null 이라면 실행
+	}
 
-        Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
+	public Vector2 GetMovementVectorNormalized() {
+		var inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
 
-        inputVector = inputVector.normalized;
+		inputVector = inputVector.normalized;
 
-        return inputVector;
-    }
+		return inputVector;
+	}
 }
