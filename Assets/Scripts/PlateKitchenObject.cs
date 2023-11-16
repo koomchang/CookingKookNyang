@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlateKitchenObject : KitchenObject {
 
+	[SerializeField] private List<KitchenObjectSO> validKitchenObjectSOList;
+
 	private List<KitchenObjectSO> kitchenObjectSOList;
 
 	private void Awake() {
@@ -12,6 +14,9 @@ public class PlateKitchenObject : KitchenObject {
 	}
 
 	public bool TryAddIngredient(KitchenObjectSO kitchenObjectSO) {
+		if (!validKitchenObjectSOList.Contains(kitchenObjectSO)) {
+			return false;
+		}
 		if (kitchenObjectSOList.Contains(kitchenObjectSO)) {
 			return false;
 		}

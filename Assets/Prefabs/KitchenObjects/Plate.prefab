@@ -46,6 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kitchenObjectSO: {fileID: 11400000, guid: 169e31cc56343452ebda066e4c056244, type: 2}
+  validKitchenObjectSOList:
+  - {fileID: 11400000, guid: 8478b45f157894612993a00a30f99ff1, type: 2}
+  - {fileID: 11400000, guid: 3a3e73baf2ecd40039fca2401af046f3, type: 2}
+  - {fileID: 11400000, guid: 1f9a5530cc9564dd1a12ce417f04e9e1, type: 2}
+  - {fileID: 11400000, guid: 21888d8379d7945e9b000fbebf6eaf54, type: 2}
+  - {fileID: 11400000, guid: 6f88a23c607704496a9fa5d6f751ad82, type: 2}
+  - {fileID: 11400000, guid: 5c6fdf5710de64e82a96ba14fa62e50e, type: 2}
 --- !u!1001 &2627407617764675702
 PrefabInstance:
   m_ObjectHideFlags: 0
