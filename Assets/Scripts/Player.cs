@@ -2,6 +2,11 @@ using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IKitchenObjectParent {
+	
+	public static Player Instance { get; private set; } // singleton in Unity
+
+	public event EventHandler OnPickedSomething;
+
 	[SerializeField] private float moveSpeed = 7f;
 	[SerializeField] private GameInput gameInput;
 	[SerializeField] private LayerMask countersLayerMask;
@@ -11,8 +16,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 	private KitchenObject kitchenObject;
 	private Vector3 lastInteractDir; // game object 를 향하여 계속 이동하지 않아도 game object 와 상호작용할 수 있기 위해 만든 변수
 	private BaseCounter selectedCounter;
-	public static Player Instance { get; private set; } // singleton in Unity
-
+	
 	private void Awake() {
 		if (Instance != null) Debug.LogError("There is more than one Player instance");
 
@@ -35,6 +39,10 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 
 	public void SetKitchenObject(KitchenObject kitchenObject) {
 		this.kitchenObject = kitchenObject;
+
+		if (kitchenObject != null) {
+			OnPickedSomething?.Invoke(this, EventArgs.Empty);
+		}
 	}
 
 	public KitchenObject GetKitchenObject() {
