@@ -1,14 +1,13 @@
 using System;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IKitchenObjectParent {
-	
-	public static Player Instance { get; private set; } // singleton in Unity
+public class Player : NetworkBehaviour, IKitchenObjectParent {
+	// public static Player Instance { get; private set; } // singleton in Unity
 
 	public event EventHandler OnPickedSomething;
 
 	[SerializeField] private float moveSpeed = 7f;
-	[SerializeField] private GameInput gameInput;
 	[SerializeField] private LayerMask countersLayerMask;
 	[SerializeField] private Transform kitchenObjectHoldPoint;
 
@@ -16,19 +15,21 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 	private KitchenObject kitchenObject;
 	private Vector3 lastInteractDir; // game object 를 향하여 계속 이동하지 않아도 game object 와 상호작용할 수 있기 위해 만든 변수
 	private BaseCounter selectedCounter;
-	
-	private void Awake() {
-		if (Instance != null) Debug.LogError("There is more than one Player instance");
 
-		Instance = this;
+	private void Awake() {
+		// Instance = this;
 	}
 
 	private void Start() {
-		gameInput.OnInteractAction += GameInput_OnInteractAction; // 미리 설정한 키를 입력한다면 상호작용
-		gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
+		GameInput.Instance.OnInteractAction += GameInput_OnInteractAction; // 미리 설정한 키를 입력한다면 상호작용
+		GameInput.Instance.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
 	}
 
 	private void Update() {
+		if (!IsOwner) {
+			return;
+		}
+
 		HandleMovement();
 		HandleInteractions();
 	}
@@ -61,7 +62,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 
 	private void GameInput_OnInteractAlternateAction(object sender, EventArgs e) {
 		if (!KitchenGameManager.Instance.IsGamePlaying()) return;
-		
+
 		if (selectedCounter != null) {
 			selectedCounter.InteractAlternate(this);
 		}
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 	}
 
 	private void HandleInteractions() {
-		var inputVector = gameInput.GetMovementVectorNormalized();
+		var inputVector = GameInput.Instance.GetMovementVectorNormalized();
 
 		var moveDir = new Vector3(inputVector.x, 0f, inputVector.y); // x, y, z 축  
 
@@ -113,7 +114,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 	}
 
 	private void HandleMovement() {
-		var inputVector = gameInput.GetMovementVectorNormalized();
+		var inputVector = GameInput.Instance.GetMovementVectorNormalized();
 
 		var moveDir = new Vector3(inputVector.x, 0f, inputVector.y); // x, y, z 축
 
