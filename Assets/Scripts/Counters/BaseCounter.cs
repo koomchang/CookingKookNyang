@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Unity.Netcode;
 
 public class BaseCounter : MonoBehaviour, IKitchenObjectParent {
 
@@ -45,5 +46,9 @@ public class BaseCounter : MonoBehaviour, IKitchenObjectParent {
 
 	public virtual void InteractAlternate(Player player) {
 		// Debug.Log("BaseCounter InteractAlternate();");
+	}
+	
+	public NetworkObject GetNetworkObject() {
+		return null;
 	}
 }
