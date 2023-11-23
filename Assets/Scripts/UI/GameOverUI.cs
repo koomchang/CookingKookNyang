@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI recipesDeliveredText;
+    [SerializeField] private Text recipesDeliveredText;
 
     private void Start() {
         KitchenGameManager.Instance.OnStateChanged += KitchenGameManager_OnStateChanged;

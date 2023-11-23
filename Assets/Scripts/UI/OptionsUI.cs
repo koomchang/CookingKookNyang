@@ -21,16 +21,16 @@ public class OptionsUI : MonoBehaviour {
     [SerializeField] private Button interactAlternateButton;
     [SerializeField] private Button pauseButton;
 
-    [SerializeField] private TextMeshProUGUI soundEffectsText;
-    [SerializeField] private TextMeshProUGUI musicText;
+    [SerializeField] private Text soundEffectsText;
+    [SerializeField] private Text musicText;
 
-    [SerializeField] private TextMeshProUGUI moveUpText;
-    [SerializeField] private TextMeshProUGUI moveDownText;
-    [SerializeField] private TextMeshProUGUI moveLeftText;
-    [SerializeField] private TextMeshProUGUI moveRightText;
-    [SerializeField] private TextMeshProUGUI interactText;
-    [SerializeField] private TextMeshProUGUI interactAlternateText;
-    [SerializeField] private TextMeshProUGUI pauseText;
+    [SerializeField] private Text moveUpText;
+    [SerializeField] private Text moveDownText;
+    [SerializeField] private Text moveLeftText;
+    [SerializeField] private Text moveRightText;
+    [SerializeField] private Text interactText;
+    [SerializeField] private Text interactAlternateText;
+    [SerializeField] private Text pauseText;
 
     [SerializeField] private Transform pressToRebindKeyTransform;
     
@@ -92,8 +92,8 @@ public class OptionsUI : MonoBehaviour {
     }
 
     private void UpdateVisual() {
-        soundEffectsText.text = "Sound Effects : " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
-        musicText.text = "Music : " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
+        soundEffectsText.text = "효과음 : " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
+        musicText.text = "음악 : " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
 
         moveUpText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Up);
         moveDownText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Down);

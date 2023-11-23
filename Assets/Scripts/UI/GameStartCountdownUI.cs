@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameStartCountdownUI : MonoBehaviour {
     
     private const string NUMBER_POPUP = "NumberPopup";
     
-    [SerializeField] private TextMeshProUGUI countdownText;
+    [SerializeField] private Text countdownText;
 
     private Animator animator;
     private int previousCountdownNumber;

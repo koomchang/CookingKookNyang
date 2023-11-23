@@ -10,7 +10,7 @@ public class DeliveryResultUI : MonoBehaviour {
 	
 	[SerializeField] private Image backgroundImage;
 	[SerializeField] private Image iconImage;
-	[SerializeField] private TextMeshProUGUI messageText;
+	[SerializeField] private Text messageText;
 	[SerializeField] private Color successColor;
 	[SerializeField] private Color failedColor;
 	[SerializeField] private Sprite successSprite;
