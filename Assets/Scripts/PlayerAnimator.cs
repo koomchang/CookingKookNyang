@@ -16,6 +16,7 @@ public class PlayerAnimator : NetworkBehaviour {
 		if (!IsOwner) {
 			return;
 		}
+
 		animator.SetBool(IS_WALKING, player.IsWalking());
 	}
 }

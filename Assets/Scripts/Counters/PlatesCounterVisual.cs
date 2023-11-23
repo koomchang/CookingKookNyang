@@ -28,7 +28,7 @@ public class PlatesCounterVisual : MonoBehaviour {
 	private void PlatesCounter_OnPlateSpawned(object sender, EventArgs e) {
 		var plateVisualTransform = Instantiate(plateVisualPrefab, counterTopPoint);
 		float plateOffsetY = 0.1f;
-		plateVisualTransform.localPosition = new Vector3(0, plateOffsetY * plateVisualGameObjectList.Count,0);
+		plateVisualTransform.localPosition = new Vector3(0, plateOffsetY * plateVisualGameObjectList.Count, 0);
 		plateVisualGameObjectList.Add(plateVisualTransform.gameObject);
 	}
 }

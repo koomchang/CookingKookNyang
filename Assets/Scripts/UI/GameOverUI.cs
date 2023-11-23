@@ -4,30 +4,30 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class GameOverUI : MonoBehaviour
-{
-    [SerializeField] private Text recipesDeliveredText;
+public class GameOverUI : MonoBehaviour {
+	[SerializeField] private Text recipesDeliveredText;
 
-    private void Start() {
-        KitchenGameManager.Instance.OnStateChanged += KitchenGameManager_OnStateChanged;
+	private void Start() {
+		KitchenGameManager.Instance.OnStateChanged += KitchenGameManager_OnStateChanged;
 
-        Hide();
-    }
+		Hide();
+	}
 
-    private void KitchenGameManager_OnStateChanged(object sender, System.EventArgs e) {
-        if (KitchenGameManager.Instance.IsGameOver()) {
-            Show();
-            recipesDeliveredText.text = DeliveryManager.Instance.GetSuccessfulRecipesAmount().ToString();
-        } else {
-            Hide();
-        }
-    }
+	private void KitchenGameManager_OnStateChanged(object sender, System.EventArgs e) {
+		if (KitchenGameManager.Instance.IsGameOver()) {
+			Show();
+			recipesDeliveredText.text = DeliveryManager.Instance.GetSuccessfulRecipesAmount().ToString();
+		}
+		else {
+			Hide();
+		}
+	}
 
-    private void Show() {
-        gameObject.SetActive(true);
-    }
+	private void Show() {
+		gameObject.SetActive(true);
+	}
 
-    private void Hide() {
-        gameObject.SetActive(false);
-    }
+	private void Hide() {
+		gameObject.SetActive(false);
+	}
 }

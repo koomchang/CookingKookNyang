@@ -3,13 +3,12 @@ using System;
 using Unity.Netcode;
 
 public class BaseCounter : NetworkBehaviour, IKitchenObjectParent {
-
 	public static event EventHandler OnAnyObjectPlacedHere;
 
 	public static void ResetStaticData() {
 		OnAnyObjectPlacedHere = null;
 	}
-	
+
 	[SerializeField] private Transform counterTopPoint;
 
 	private KitchenObject kitchenObject;
@@ -47,7 +46,7 @@ public class BaseCounter : NetworkBehaviour, IKitchenObjectParent {
 	public virtual void InteractAlternate(Player player) {
 		// Debug.Log("BaseCounter InteractAlternate();");
 	}
-	
+
 	public NetworkObject GetNetworkObject() {
 		return NetworkObject;
 	}

@@ -24,12 +24,12 @@ public class KitchenObject : NetworkBehaviour {
 	private void SetKitchenObjectParentServerRpc(NetworkObjectReference kitchenObjectParentNetworkObjectReference) {
 		SetKitchenObjectParentClientRpc(kitchenObjectParentNetworkObjectReference);
 	}
-	
+
 	[ClientRpc]
 	private void SetKitchenObjectParentClientRpc(NetworkObjectReference kitchenObjectParentNetworkObjectReference) {
 		kitchenObjectParentNetworkObjectReference.TryGet(out NetworkObject kitchenObjectParentNetworkObject);
 		IKitchenObjectParent kitchenObjectParent = kitchenObjectParentNetworkObject.GetComponent<IKitchenObjectParent>();
-		
+
 		if (this.kitchenObjectParent != null)
 			// 이전 카운터가 존재한다면
 			this.kitchenObjectParent.ClearKitchenObject(); // 이전 카운터에서 오브젝트 제거
@@ -41,7 +41,7 @@ public class KitchenObject : NetworkBehaviour {
 			Debug.LogError("IKitchenObjectParent already has a KitchenObject!");
 
 		kitchenObjectParent.SetKitchenObject(this);
-		
+
 		followTransform.SetTargetTransform(kitchenObjectParent.GetKitchenObjectFollowTransform());
 	}
 
@@ -52,7 +52,7 @@ public class KitchenObject : NetworkBehaviour {
 	public void DestroySelf() {
 		Destroy(gameObject);
 	}
-	
+
 	public void ClearKitchenObjectOnParent() {
 		kitchenObjectParent.ClearKitchenObject();
 	}
@@ -71,7 +71,7 @@ public class KitchenObject : NetworkBehaviour {
 	public static void SpawnKitchenObject(KitchenObjectSO kitchenObjectSo, IKitchenObjectParent kitchenObjectParent) {
 		KitchenGameMultiplayer.Instance.SpawnKitchenObject(kitchenObjectSo, kitchenObjectParent);
 	}
-	
+
 	public static void DestroyKitchenObject(KitchenObject kitchenObject) {
 		KitchenGameMultiplayer.Instance.DestroyKitchenObject(kitchenObject);
 	}

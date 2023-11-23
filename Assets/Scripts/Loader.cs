@@ -4,21 +4,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class Loader {
-    
-    public enum Scene {
-        MainMenuScene,
-        GameScene,
-        LoadingScene
-    }
-    private static Scene targetScene;
+	public enum Scene {
+		MainMenuScene,
+		GameScene,
+		LoadingScene
+	}
 
-    public static void Load(Scene targetScene) {
-        Loader.targetScene = targetScene;
+	private static Scene targetScene;
 
-        SceneManager.LoadScene(Scene.LoadingScene.ToString());
-    }
+	public static void Load(Scene targetScene) {
+		Loader.targetScene = targetScene;
 
-    public static void LoaderCallback() {
-        SceneManager.LoadScene(targetScene.ToString());
-    }
+		SceneManager.LoadScene(Scene.LoadingScene.ToString());
+	}
+
+	public static void LoaderCallback() {
+		SceneManager.LoadScene(targetScene.ToString());
+	}
 }

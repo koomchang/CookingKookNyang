@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class DeliveryResultUI : MonoBehaviour {
 	private const string POPUP = "Popup";
-	
+
 	[SerializeField] private Image backgroundImage;
 	[SerializeField] private Image iconImage;
 	[SerializeField] private Text messageText;
@@ -25,7 +25,7 @@ public class DeliveryResultUI : MonoBehaviour {
 	private void Start() {
 		DeliveryManager.Instance.OnRecipeSuccess += DeliveryManager_OnRecipeSuccess;
 		DeliveryManager.Instance.OnRecipeFailed += DeliveryManager_OnRecipeFailed;
-		
+
 		gameObject.SetActive(false);
 	}
 

@@ -23,7 +23,7 @@ public class ClearCounter : BaseCounter {
 							player.GetKitchenObject().DestroySelf();
 						}
 					}
-				} 
+				}
 			}
 			else {
 				GetKitchenObject().SetKitchenObjectParent(player);

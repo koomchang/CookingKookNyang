@@ -12,12 +12,12 @@ public class ContainerCounter : BaseCounter {
 			InteractLogicServerRpc();
 		}
 	}
-	
+
 	[ServerRpc(RequireOwnership = false)]
 	private void InteractLogicServerRpc() {
 		InteractLogicClientRpc();
 	}
-	
+
 	[ClientRpc]
 	private void InteractLogicClientRpc() {
 		OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);

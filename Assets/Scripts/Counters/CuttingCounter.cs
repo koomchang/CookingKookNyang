@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 
 public class CuttingCounter : BaseCounter, IHasProgress {
-
 	public static event EventHandler OnAnyCut;
 
 	new public static void ResetStaticData() {
@@ -31,7 +30,7 @@ public class CuttingCounter : BaseCounter, IHasProgress {
 			if (player.HasKitchenObject()) { }
 			else {
 				GetKitchenObject().SetKitchenObjectParent(player);
-			}		
+			}
 		}
 	}
 
@@ -44,7 +43,7 @@ public class CuttingCounter : BaseCounter, IHasProgress {
 			OnAnyCut?.Invoke(this, EventArgs.Empty);
 
 			var cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
-			
+
 			OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs {
 				progressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
 			});

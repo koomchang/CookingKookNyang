@@ -16,7 +16,8 @@ public class StoveBurnWarningUI : MonoBehaviour {
 		bool show = stoveCounter.IsFried() && e.progressNormalized >= burnShowProgressAmount;
 		if (show) {
 			Show();
-		} else {
+		}
+		else {
 			Hide();
 		}
 	}
@@ -24,7 +25,7 @@ public class StoveBurnWarningUI : MonoBehaviour {
 	private void Show() {
 		gameObject.SetActive(true);
 	}
-	
+
 	private void Hide() {
 		gameObject.SetActive(false);
 	}

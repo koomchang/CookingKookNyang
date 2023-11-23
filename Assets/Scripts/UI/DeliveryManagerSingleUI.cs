@@ -4,28 +4,27 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DeliveryManagerSingleUI : MonoBehaviour
-{
-    [SerializeField] private Text recipeNameText;
-    [SerializeField] private Transform iconContainer;
-    [SerializeField] private Transform iconTemplate;
-    
-    private void Awake() {
-        iconTemplate.gameObject.SetActive(false);
-    }
+public class DeliveryManagerSingleUI : MonoBehaviour {
+	[SerializeField] private Text recipeNameText;
+	[SerializeField] private Transform iconContainer;
+	[SerializeField] private Transform iconTemplate;
 
-    public void SetRecipeSO(RecipeSO recipeSO) {
-        recipeNameText.text = recipeSO.recipeName;
+	private void Awake() {
+		iconTemplate.gameObject.SetActive(false);
+	}
 
-        foreach (Transform child in iconContainer) {
-            if (child == iconTemplate) continue;
-            Destroy(child.gameObject);
-        }
+	public void SetRecipeSO(RecipeSO recipeSO) {
+		recipeNameText.text = recipeSO.recipeName;
 
-        foreach (KitchenObjectSO kitchenObjectSO in recipeSO.kitchenObjectSOList) {
-            Transform iconTransform = Instantiate(iconTemplate, iconContainer);
-            iconTransform.gameObject.SetActive(true);
-            iconTransform.GetComponent<Image>().sprite = kitchenObjectSO.sprite;
-        }
-    }
+		foreach (Transform child in iconContainer) {
+			if (child == iconTemplate) continue;
+			Destroy(child.gameObject);
+		}
+
+		foreach (KitchenObjectSO kitchenObjectSO in recipeSO.kitchenObjectSOList) {
+			Transform iconTransform = Instantiate(iconTemplate, iconContainer);
+			iconTransform.gameObject.SetActive(true);
+			iconTransform.GetComponent<Image>().sprite = kitchenObjectSO.sprite;
+		}
+	}
 }
