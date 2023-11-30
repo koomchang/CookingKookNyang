@@ -1756,6 +1756,7 @@ GameObject:
   - component: {fileID: 2943312085194620041}
   - component: {fileID: 2273591204621619224}
   - component: {fileID: 885025539367848035}
+  - component: {fileID: 7267647078377150847}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -1828,6 +1829,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionStateInfoList: []
   m_Animator: {fileID: 2943312085194620041}
+--- !u!114 &7267647078377150847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566826167723581740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33fcb16b718ec481db400710f32b7d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headMeshRenderer: {fileID: 7407441812068460241}
+  bodyMeshRenderer: {fileID: 5493446092812362134}
 --- !u!1 &4694474459231609084
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,7 +3069,8 @@ GameObject:
   - component: {fileID: 5705321139626190752}
   - component: {fileID: 7498984914761309394}
   - component: {fileID: -6638528340499831419}
-  m_Layer: 0
+  - component: {fileID: 5270486087365728463}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3094,7 +3110,16 @@ MonoBehaviour:
   countersLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  collisionsLayerMask:
+    serializedVersion: 2
+    m_Bits: 192
   kitchenObjectHoldPoint: {fileID: 8477921447525220192}
+  spawnPositionList:
+  - {x: -2, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: -2, y: 0, z: -2}
+  - {x: 2, y: 0, z: -2}
+  playerVisual: {fileID: 7267647078377150847}
 --- !u!114 &5705321139626190752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3149,6 +3174,27 @@ MonoBehaviour:
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 1
+--- !u!65 &5270486087365728463
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7297418393833731779}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7, y: 1, z: 0.7}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &7498311945332132381
 GameObject:
   m_ObjectHideFlags: 0
