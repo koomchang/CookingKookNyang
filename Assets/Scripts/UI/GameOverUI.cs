@@ -15,6 +15,8 @@ public class GameOverUI : MonoBehaviour {
     private void Awake() {
         playAgainButton.onClick.AddListener(() => {
             NetworkManager.Singleton.Shutdown();
+            //Delete lobby
+            KitchenGameLobby.Instance.DeleteLobby();
             Loader.Load(Loader.Scene.MainMenuScene);
         });
     }
