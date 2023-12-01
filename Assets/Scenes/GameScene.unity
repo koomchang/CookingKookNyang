@@ -1322,11 +1322,11 @@ RectTransform:
   - {fileID: 579329093}
   - {fileID: 975623791}
   - {fileID: 897224660}
-  - {fileID: 1326111929}
   - {fileID: 594741690}
   - {fileID: 699563099}
-  - {fileID: 1839932197}
   - {fileID: 950881978}
+  - {fileID: 1326111929}
+  - {fileID: 1839932197}
   - {fileID: 1537284470}
   - {fileID: 2121400675}
   m_Father: {fileID: 0}
@@ -3982,7 +3982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8509804}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11422,7 +11422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.78039217}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
