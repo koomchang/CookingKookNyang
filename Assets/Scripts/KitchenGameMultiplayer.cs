@@ -38,7 +38,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour {
 
         DontDestroyOnLoad(gameObject);
 
-        playerName = PlayerPrefs.GetString(PLAYER_PREFS_PLAYER_NAME_MULTIPLAYER, "고양이" + UnityEngine.Random.Range(100, 1000));
+        playerName = PlayerPrefs.GetString(PLAYER_PREFS_PLAYER_NAME_MULTIPLAYER, "PlayerName" + UnityEngine.Random.Range(100, 1000));
 
         playerDataNetworkList = new NetworkList<PlayerData>();
         playerDataNetworkList.OnListChanged += PlayerDataNetworkList_OnListChanged;
@@ -95,13 +95,13 @@ public class KitchenGameMultiplayer : NetworkBehaviour {
     private void NetworkManager_ConnectionApprovalCallback(NetworkManager.ConnectionApprovalRequest connectionApprovalRequest, NetworkManager.ConnectionApprovalResponse connectionApprovalResponse) {
         if (SceneManager.GetActiveScene().name != Loader.Scene.CharacterSelectScene.ToString()) {
             connectionApprovalResponse.Approved = false;
-            connectionApprovalResponse.Reason = "게임이 이미 시작되었습니다!";
+            connectionApprovalResponse.Reason = "Game has already started";
             return;
         }
 
         if (NetworkManager.Singleton.ConnectedClientsIds.Count >= MAX_PLAYER_AMOUNT) {
             connectionApprovalResponse.Approved = false;
-            connectionApprovalResponse.Reason = "정원을 초과했습니다!";
+            connectionApprovalResponse.Reason = "Game is full";
             return;
         }
 
