@@ -30,6 +30,10 @@ public class CharacterSelectReady : NetworkBehaviour {
     [ServerRpc(RequireOwnership = false)]
     private void SetPlayerReadyServerRpc(ServerRpcParams serverRpcParams = default) {
         SetPlayerReadyClientRpc(serverRpcParams.Receive.SenderClientId);
+        
+        if (NetworkManager.Singleton.ConnectedClientsIds.Count < 2) {
+            return;
+        }
 
         playerReadyDictionary[serverRpcParams.Receive.SenderClientId] = true;
 
