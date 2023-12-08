@@ -165,7 +165,7 @@ public class KitchenGameLobby : MonoBehaviour {
                  }
             });
 
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(allocation, "wss"));
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(allocation, "dtls"));
 
             KitchenGameMultiplayer.Instance.StartHost();
             Loader.LoadNetwork(Loader.Scene.CharacterSelectScene);
@@ -184,7 +184,7 @@ public class KitchenGameLobby : MonoBehaviour {
 
             JoinAllocation joinAllocation = await JoinRelay(relayJoinCode);
 
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(joinAllocation, "wss"));
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(joinAllocation, "dtls"));
 
             KitchenGameMultiplayer.Instance.StartClient();
         } catch (LobbyServiceException e) {
@@ -202,7 +202,7 @@ public class KitchenGameLobby : MonoBehaviour {
 
             JoinAllocation joinAllocation = await JoinRelay(relayJoinCode);
 
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(joinAllocation, "wss"));
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(joinAllocation, "dtls"));
 
             KitchenGameMultiplayer.Instance.StartClient();
         } catch (LobbyServiceException e) {
@@ -220,7 +220,7 @@ public class KitchenGameLobby : MonoBehaviour {
 
             JoinAllocation joinAllocation = await JoinRelay(relayJoinCode);
 
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(joinAllocation, "wss"));
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(joinAllocation, "dtls"));
 
             KitchenGameMultiplayer.Instance.StartClient();
         } catch (LobbyServiceException e) {
