@@ -51,6 +51,17 @@
 - Unity : 2022.3.9.f1
 - 형상관리도구 : Git
 
+● 유니티 패키지 버전
+
+Authentication 3.1.0
+Cinemachine 2.9.7
+Lobby 1.1.1
+Multiplayer Tools 1.1.1
+Netcode for GameObjects 1.5.2
+Relay 1.0.5
+TextMeshPro 3.0.6
+Unity Transport 1.3.4
+
 ● 외부 에셋
 
 - Low Poly Kitchen Assets Pack (€ 9.99)
