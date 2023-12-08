@@ -749,11 +749,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: a6474299-5a78-4db4-8d31-fb38d9709139
+  cloudProjectId: 7439aebd-7ab5-47f1-b17c-551c552f413f
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: CookingKookNyang
-  organizationId: leahpar0401_unity
+  projectName: CookingCookNyang
+  organizationId: cjkimhello97
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
